@@ -6,11 +6,13 @@ import org.fit.employeemicroservice.repository.EmployeeRepository;
 import org.fit.employeemicroservice.util.EmployeeUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Service("EmployeeService")
 public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired

@@ -35,8 +35,8 @@ public class ActivityController {
         return new ResponseEntity<List<ActivityDto>>(activitiesByRange, HttpStatus.OK);
     }
 
-    @GetMapping("/activity/{id}/date")
-    public ResponseEntity<List<ActivityDto>> getEmployeeActivitiesByRange(@PathVariable("id") String employeeId, @RequestParam Date startDate, @RequestParam Date endDate) throws Exception {
+    @GetMapping("/activityById/{id}/date")
+    public ResponseEntity<List<ActivityDto>> getEmployeeActivitiesByRange(@PathVariable("id") String employeeId, @RequestParam(required = false) Date startDate, @RequestParam(required = false) Date endDate) throws Exception {
         List<ActivityDto> employeeActivitiesByRange = activityService.getEmployeeActivitiesByRange(employeeId, startDate, endDate);
         return new ResponseEntity<List<ActivityDto>>(employeeActivitiesByRange, HttpStatus.OK);
     }

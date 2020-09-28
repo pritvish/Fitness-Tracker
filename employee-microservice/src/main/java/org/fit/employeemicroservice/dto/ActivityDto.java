@@ -1,4 +1,4 @@
-package org.fit.activitymicroservice.dto;
+package org.fit.employeemicroservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

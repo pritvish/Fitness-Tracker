@@ -5,12 +5,13 @@ import org.fit.activitymicroservice.entity.Activity;
 import org.fit.activitymicroservice.repository.ActivityRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Service("ActivityService")
 public class ActivityServiceImpl implements ActivityService {
 
     @Autowired
@@ -44,8 +45,13 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public List<ActivityDto> getEmployeeActivitiesByRange(String employeeId, Date startDate, Date endDate) {
-        List<Activity> employeeActivitiesByRange = activityRepository.getEmployeeActivitiesByRange(employeeId, startDate, endDate);
-        return employeeActivitiesByRange.stream().map(this::convertActivityToActivityDto).collect(Collectors.toList());
+        List<Activity> employeeActivities = null;
+        if (startDate == null && endDate == null) {
+            employeeActivities = activityRepository.getEmployeeActivitiesWithoutRange(employeeId);
+        } else {
+            employeeActivities = activityRepository.getEmployeeActivitiesByRange(employeeId, startDate, endDate);
+        }
+        return employeeActivities.stream().map(this::convertActivityToActivityDto).collect(Collectors.toList());
     }
 
     @Override
