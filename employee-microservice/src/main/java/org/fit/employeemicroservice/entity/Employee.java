@@ -18,6 +18,7 @@ public class Employee {
     @Id
     private String employeeId;
     private String employeeName;
+    @OneToMany
     private List<Activity> activities;
 
 }
