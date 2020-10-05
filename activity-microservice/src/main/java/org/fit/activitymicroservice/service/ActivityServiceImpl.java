@@ -60,7 +60,7 @@ public class ActivityServiceImpl implements ActivityService {
         return activitiesByActivityNameAndRange.stream().map(this::convertActivityToActivityDto).collect(Collectors.toList());
     }
 
-    @Override // TODO need to use modifying and transactional
+    @Override // TODO need to use @Modifying and @Transactional
     public String deleteActivity(String employeeId, Date startDate, Date endDate) throws Exception {
         List<Activity> employeeActivitiesByRange = activityRepository.getEmployeeActivitiesByRange(employeeId, startDate, endDate);
         if (!employeeActivitiesByRange.isEmpty()) {
