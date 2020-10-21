@@ -1,10 +1,8 @@
-package org.fit.employeemicroservice.dto;
+package org.fit.activitymicroservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Data
 @AllArgsConstructor
